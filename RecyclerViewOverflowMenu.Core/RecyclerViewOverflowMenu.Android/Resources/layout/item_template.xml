@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView_ListItem"
+    android:layout_gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:focusable="true"
+    android:clickable="true"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    
+    local:cardUseCompatPadding="true"
+    local:contentPaddingLeft="4dp"
+    local:contentPaddingRight="4dp"
+    local:contentPaddingTop="4dp"
+    local:contentPaddingBottom="4dp"
+    local:cardBackgroundColor="@android:color/white"
+    local:elevation="6dp"
+    local:MvxBind="Click ItemClick">
+  <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+    <TextView
+       android:id="@+id/listitem_name"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:textSize="24dp"
+       local:MvxBind="Text Title" />
+    <ImageButton
+        android:id="@+id/item_more"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+             android:layout_alignParentBottom="true"
+             android:layout_alignParentRight="true"
+         android:background="@android:color/transparent"
+        local:srcCompat="@drawable/dots_vertical"
+     />
+    <!--  android:background="@drawable/ic_dots_vertical_grey600_24dp"  -->
+  </RelativeLayout>
+</android.support.v7.widget.CardView>
