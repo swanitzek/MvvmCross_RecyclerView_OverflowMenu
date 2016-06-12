@@ -3,8 +3,7 @@ using MvvmCross.Core.ViewModels;
 
 namespace RecyclerViewOverflowMenu.Core.ViewModels
 {
-    public class FirstViewModel 
-        : MvxViewModel
+    public class FirstViewModel : MvxViewModel
     {
         public ObservableCollection<ItemViewModel> Items { get; set; }
 
@@ -17,16 +16,17 @@ namespace RecyclerViewOverflowMenu.Core.ViewModels
 
         private void addSampleItems()
         {
+            var deleteCommand = new MvxCommand<ItemViewModel>(deleteItem);
+
             for (int i = 1; i < 11; i++)
             {
-                Items.Add(new ItemViewModel() { Title = $"Item {i}" });
+                Items.Add(new ItemViewModel(deleteCommand) { Title = $"Item {i}" });
             }
         }
-    }
 
-    public class ItemViewModel
-    {
-        public string Title { get; set; }
-
+        private void deleteItem(ItemViewModel item)
+        {
+            Items.Remove(item);
+        }
     }
 }

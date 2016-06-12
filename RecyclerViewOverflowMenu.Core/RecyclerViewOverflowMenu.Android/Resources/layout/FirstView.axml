@@ -5,6 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <MvvmCross.Droid.Support.V7.RecyclerView.MvxRecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         local:MvxItemTemplate="@layout/item_template"
