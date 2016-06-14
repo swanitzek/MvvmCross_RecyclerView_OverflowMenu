@@ -20,7 +20,7 @@ namespace RecyclerViewOverflowMenu.Android.Views
 
             m_RecyclerView = FindViewById<MvxRecyclerView>(Resource.Id.recyclerView);
             
-            m_RecyclerView.Adapter = new MyRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
+            m_RecyclerView.Adapter = new MyCustomRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
         }
     }
 }

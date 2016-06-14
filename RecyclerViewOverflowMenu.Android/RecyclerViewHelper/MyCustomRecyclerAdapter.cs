@@ -5,9 +5,9 @@ using MvvmCross.Droid.Support.V7.RecyclerView;
 
 namespace RecyclerViewOverflowMenu.Android.RecyclerViewHelper
 {
-    public class MyRecyclerAdapter: MvxRecyclerAdapter
+    public class MyCustomRecyclerAdapter: MvxRecyclerAdapter
     {
-        public MyRecyclerAdapter(IMvxAndroidBindingContext bindingContext) : base(bindingContext)
+        public MyCustomRecyclerAdapter(IMvxAndroidBindingContext bindingContext) : base(bindingContext)
         {
         }
 
@@ -15,8 +15,8 @@ namespace RecyclerViewOverflowMenu.Android.RecyclerViewHelper
         {
             var itemBindingContext = new MvxAndroidBindingContext(parent.Context, BindingContext.LayoutInflaterHolder);
 
-            // Create an instance of MyViewHolder instead of MvxViewHolder
-            return new MyViewHolder(InflateViewForHolder(parent, viewType, itemBindingContext), itemBindingContext)
+            // Create an instance of MyCustomViewHolder instead of MvxViewHolder
+            return new MyCustomViewHolder(InflateViewForHolder(parent, viewType, itemBindingContext), itemBindingContext)
             {
                 Click = ItemClick,
                 LongClick = ItemLongClick
