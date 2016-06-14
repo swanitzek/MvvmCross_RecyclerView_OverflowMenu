@@ -135,8 +135,8 @@
     <Compile Include="Bootstrap\JsonPluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
-    <Compile Include="RecyclerViewHelper\MyRecyclerAdapter.cs" />
-    <Compile Include="RecyclerViewHelper\MyViewHolder.cs" />
+    <Compile Include="RecyclerViewHelper\MyCustomRecyclerAdapter.cs" />
+    <Compile Include="RecyclerViewHelper\MyCustomViewHolder.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />

@@ -8,18 +8,16 @@ using RecyclerViewOverflowMenu.Core.ViewModels;
 
 namespace RecyclerViewOverflowMenu.Android.RecyclerViewHelper
 {
-    public class MyViewHolder : MvxRecyclerViewHolder, View.IOnClickListener, PopupMenu.IOnMenuItemClickListener
+    public class MyCustomViewHolder : MvxRecyclerViewHolder
     {
-        public MyViewHolder(View itemView, IMvxAndroidBindingContext context) : base(itemView, context)
+        public MyCustomViewHolder(View itemView, IMvxAndroidBindingContext context) : base(itemView, context)
         {
             var itemMore = itemView.FindViewById<ImageView>(Resource.Id.item_more);
 
-            itemMore?.SetOnClickListener(this);
-        }
-
-        public void OnClick(View v)
-        {
-            showPopUpMenu(v);
+            itemMore.Click += (sender, args) =>
+            {
+                showPopUpMenu(itemMore);
+            };
         }
 
         private void showPopUpMenu(View v)
@@ -30,29 +28,33 @@ namespace RecyclerViewOverflowMenu.Android.RecyclerViewHelper
             MenuInflater inflater = popup.MenuInflater;
             inflater.Inflate(Resource.Menu.menu_overflow, popup.Menu);
 
-            popup.SetOnMenuItemClickListener(this);
+            popup.MenuItemClick += Popup_MenuItemClick;
+
             popup.Show();
         }
 
-        public bool OnMenuItemClick(IMenuItem item)
+        private void Popup_MenuItemClick(object sender, PopupMenu.MenuItemClickEventArgs e)
         {
-            var viewModel = (ItemViewModel) BindingContext.DataContext;
+            // get the id of the selected item as defined in your menu.xml
+            var itemId = e.Item.ItemId;
 
-            if (item.ItemId == Resource.Id.action_toast)
+            // The ViewModel of the selected RecyclerView-Item resides in BindingContext.DataContext
+            var viewModel = (ItemViewModel)BindingContext.DataContext;
+
+            if (itemId == Resource.Id.action_toast)
             {
                 Toast.MakeText(Application.Context, viewModel.Title + " was clicked", ToastLength.Short).Show();
 
-                return true;
+                e.Handled = true;
             }
 
-            if (item.ItemId == Resource.Id.action_remove)
+            if (itemId == Resource.Id.action_remove)
             {
+                // call any publich method of the ViewModel
                 viewModel.Delete();
 
-                return true;
+                e.Handled = true;
             }
-
-            return false;
         }
     }
 }
